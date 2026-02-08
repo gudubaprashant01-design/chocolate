@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Chocolate Day ❤️</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #5a0f14;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    /* Side GIFs */
+    .side-gif {
+      position: fixed;
+      width: 120px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 0;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+    .left-gif { left: 15px; }
+    .right-gif { right: 15px; }
+
+    /* Sparkle & glow emojis */
+    .sparkle {
+      position: fixed;
+      bottom: -30px;
+      font-size: 30px;
+      animation: floatGlow 7s linear infinite;
+      filter: drop-shadow(0 0 12px rgba(255, 20, 147, 0.9));
+      opacity: 1;
+      z-index: 1;
+    }
+    @keyframes floatGlow {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.6); opacity: 0; }
+    }
+
+    header {
+      padding: 70px 20px 30px;
+      animation: fadeDown 1.5s ease;
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header img {
+      width: 170px;
+      margin-bottom: 15px;
+      animation: pulse 2.5s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0 0 10px;
+    }
+    header p {
+      font-size: 1.3rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.95);
+      max-width: 650px;
+      margin: 40px auto;
+      padding: 40px 30px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: popUp 1.2s ease;
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes popUp {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .kitkat-wrapper {
+      position: relative;
+      width: 440px;
+      aspect-ratio: 4 / 1.4;
+      margin: 35px auto 25px;
+      cursor: pointer;
+    }
+    .kitkat-half {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.9s ease;
+    }
+    .kitkat-half.top { clip-path: inset(0 0 50% 0); }
+    .kitkat-half.bottom { clip-path: inset(50% 0 0 0); }
+    .kitkat-wrapper.broken .top { transform: translateY(-45px) rotate(-3deg); }
+    .kitkat-wrapper.broken .bottom { transform: translateY(45px) rotate(3deg); }
+
+    .inside-msg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      background: rgba(255,255,255,0.97);
+      padding: 18px 16px;
+      border-radius: 18px;
+      display: none;
+      z-index: 5;
+      animation: popUp 1s ease;
+    }
+    .inside-msg h2 { font-size: 1.4rem; margin: 0 0 6px; }
+    .inside-msg p { font-size: 1.15rem; margin: 0; line-height: 1.5; }
+
+    button {
+      background: #b31217;
+      color: white;
+      border: none;
+      padding: 16px 38px;
+      font-size: 1.05rem;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 12px 25px rgba(179,18,23,0.45);
+      transition: transform .25s, box-shadow .25s;
+    }
+    button:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 18px 32px rgba(179,18,23,0.6); }
+
+    footer { margin: 60px 0 30px; font-size: 0.95rem; opacity: 0.9; position: relative; z-index: 2; }
+  </style>
+</head>
+<body>
+
+  <!-- Animated GIF Background -->
+  <!-- Side GIFs -->
+ <img src="bubu.gif" class="side-gif left-gif">
+<img src="bubu.gif" class="side-gif right-gif">
+
+  <header>
+    <img src="logo.png" alt="KitKat Logo">
+    <h1>🍫 Happy Chocolate Day 🍫</h1>
+    <p>NIRUU!!!! ❤️</p>
+  </header>
+
+  <div class="card">
+    <div class="kitkat-wrapper" onclick="breakChocolate()">
+      <img src="kitkat.png" class="kitkat-half top">
+      <img src="kitkat.png" class="kitkat-half bottom">
+
+      <div id="hiddenMsg" class="inside-msg">
+        <h2>Just for You 💝</h2>
+        <p>
+          Tumhari smile chocolate se bhi zyada sweet hai ❤️<br>
+          Happy Chocolate Day 🍫
+        </p>
+      </div>
+    </div>
+
+    <button onclick="breakChocolate()">Break the Chocolate</button>
+  </div>
+
+  <footer>
+    Made with ❤️ & thodi si himmat 😉
+  </footer>
+
+  <script>
+    function breakChocolate() {
+      const wrapper = document.querySelector('.kitkat-wrapper');
+      const hidden = document.getElementById('hiddenMsg');
+
+      wrapper.classList.add('broken');
+      setTimeout(() => {
+        hidden.style.display = 'block';
+      }, 700);
+    }
+  </script>
+
+  <!-- Floating emoji background -->
+  <span class="sparkle" style="left:5%">💗</span>
+  <span class="sparkle" style="left:15%; animation-delay:1s">🍫</span>
+  <span class="sparkle" style="left:25%; animation-delay:2s">✨</span>
+  <span class="sparkle" style="left:35%; animation-delay:3s">💖</span>
+  <span class="sparkle" style="left:45%; animation-delay:4s">🍬</span>
+  <span class="sparkle" style="left:55%; animation-delay:1.5s">💗</span>
+  <span class="sparkle" style="left:65%; animation-delay:2.5s">🍫</span>
+  <span class="sparkle" style="left:75%; animation-delay:3.5s">✨</span>
+  <span class="sparkle" style="left:85%; animation-delay:4.5s">💖</span>
+  <span class="sparkle" style="left:95%; animation-delay:5.5s">🍬</span>
+
+</body>
+</html>
