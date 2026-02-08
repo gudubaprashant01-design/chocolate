@@ -15,6 +15,43 @@
       text-align: center;
     }
 
+    /* ---------- MOBILE RESPONSIVE FIX ---------- */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.1rem; }
+      header p { font-size: 1.05rem; }
+
+      .card {
+        margin: 20px 12px;
+        padding: 28px 18px;
+        border-radius: 18px;
+      }
+
+      .kitkat-wrapper {
+        width: 100%;
+        max-width: 320px;
+        margin: 25px auto 20px;
+      }
+
+      .inside-msg {
+        width: 92%;
+        padding: 14px 12px;
+      }
+      .inside-msg h2 { font-size: 1.2rem; }
+      .inside-msg p { font-size: 1rem; }
+
+      button {
+        width: 100%;
+        padding: 14px 0;
+        font-size: 1rem;
+      }
+
+      /* Hide side GIFs on mobile */
+      .side-gif { display: none; }
+
+      /* Softer emojis for mobile */
+      .sparkle { font-size: 22px; }
+    }
+
     /* Side GIFs */
     .side-gif {
       position: fixed;
@@ -24,6 +61,19 @@
       z-index: 0;
       opacity: 0.9;
       pointer-events: none;
+    }
+
+    /* Mobile fix */
+    @media (max-width: 768px) {
+      .side-gif {
+        width: 80px;
+        top: auto;
+        bottom: 20px;
+        transform: none;
+        opacity: 0.8;
+      }
+      .left-gif { left: 5px; }
+      .right-gif { right: 5px; }
     }
     .left-gif { left: 15px; }
     .right-gif { right: 15px; }
@@ -144,13 +194,14 @@
 
   <!-- Animated GIF Background -->
   <!-- Side GIFs -->
- <img src="bubu.gif" class="side-gif left-gif">
+  <img src="bubu.gif" class="side-gif left-gif">
 <img src="bubu.gif" class="side-gif right-gif">
+
 
   <header>
     <img src="logo.png" alt="KitKat Logo">
     <h1>🍫 Happy Chocolate Day 🍫</h1>
-    <p>NIRUU!!!! ❤️</p>
+    <p>Take a break, take a KitKat ❤️</p>
   </header>
 
   <div class="card">
@@ -171,7 +222,7 @@
   </div>
 
   <footer>
-    Made with ❤️ & thodi si himmat 😉
+    Made with 🍫, ❤️ & thodi si himmat 😉
   </footer>
 
   <script>
